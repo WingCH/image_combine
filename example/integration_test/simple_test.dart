@@ -8,7 +8,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
-    await RustLib.init();
+    await ImageCombine.instance.initialize();
   });
 
   tearDownAll(() {});
@@ -29,7 +29,7 @@ void main() {
 
     // Add timing measurement
     final stopwatch = Stopwatch()..start();
-    final result = await mergeImagesVertically(
+    final result = await ImageCombine.instance.mergeImagesVertically(
         imageBuffers: [image1Bytes, image2Bytes, image3Bytes]);
     stopwatch.stop();
     print(
@@ -49,7 +49,8 @@ void main() {
   });
 
   test('Returns null for empty image list', () async {
-    final result = await mergeImagesVertically(imageBuffers: []);
+    final result =
+        await ImageCombine.instance.mergeImagesVertically(imageBuffers: []);
 
     expect(result, isNull);
   });

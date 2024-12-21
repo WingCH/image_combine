@@ -5,7 +5,7 @@ import 'package:image/image.dart' as img;
 import 'package:flutter/foundation.dart';
 
 Future<void> main() async {
-  await RustLib.init();
+  await ImageCombine.instance.initialize();
   runApp(
     const MaterialApp(
       home: MyApp(),
@@ -82,8 +82,8 @@ class _MyAppState extends State<MyApp> {
 
   static Future<Uint8List?> _mergeImagesInBackground(
       List<Uint8List> images) async {
-    await RustLib.init();
-    return mergeImagesVertically(imageBuffers: images);
+    await ImageCombine.instance.initialize();
+    return ImageCombine.instance.mergeImagesVertically(imageBuffers: images);
   }
 
   void _handleError(String message) {
