@@ -1,0 +1,12 @@
+[package]
+name = "image_combine"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+flutter_rust_bridge = "=2.7.0"
+image = "0.25.5"
+rayon = "1.10.0"
