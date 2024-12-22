@@ -1,5 +1,5 @@
 name: image_combine
-description: "A new Flutter FFI plugin project."
+description: "A Flutter FFI plugin for merging images vertically using Rust. "
 version: 0.0.1
 homepage: https://github.com/WingCH/image_combine
 
