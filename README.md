@@ -31,6 +31,7 @@ Test conditions:
 | Device             | Processing Time |
 | ------------------ | --------------- |
 | Pixel 8 Pro        | ~900ms          |
+| iPhone 15 Pro Max  | ~500ms          |
 | iPad Pro M4        | ~400ms          |
 | Macbook Pro M1 Max | ~500ms          |
 
