@@ -41,3 +41,4 @@ Test conditions:
 - ✅ Android
 - ✅ iOS
 - ✅ MacOS
+- ✅ Windows (Structurally prepared, pending full build/runtime verification)

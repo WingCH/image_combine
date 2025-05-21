@@ -9,12 +9,20 @@ set(PROJECT_NAME "image_combine")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 include("../cargokit/cmake/cargokit.cmake")
-apply_cargokit(${PROJECT_NAME} ../rust image_combine "")
+apply_cargokit(${PROJECT_NAME} ../rust image_combine "") # This provides ${image_combine_cargokit_lib}
 
-# List of absolute paths to libraries that should be bundled with the plugin.
-# This list could contain prebuilt libraries, or libraries created by an
-# external build triggered from this build file.
+# Define the plugin library, including the C++ shim.
+# This library should be named after the plugin, e.g., "image_combine.dll".
+add_library(${PROJECT_NAME} SHARED
+  "image_combine_plugin.cpp"
+)
+
+# Link the plugin library (C++) against the Rust library.
+target_link_libraries(${PROJECT_NAME} PRIVATE ${${PROJECT_NAME}_cargokit_lib})
+
+# Set the bundled libraries variable to the library we just defined.
+# This tells Flutter to package "image_combine.dll".
 set(image_combine_bundled_libraries
-  "${${PROJECT_NAME}_cargokit_lib}"
+  "$<TARGET_FILE:${PROJECT_NAME}>"
   PARENT_SCOPE
 )
